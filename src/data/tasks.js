@@ -78,3 +78,18 @@ function getAllTasks(){
 }
 
 export {getAllTasks};
+
+export const tagColors = {
+  "Design": "#4A90E2",
+  "Development": "#27AE60",
+  "UI/UX": "#9B59B6",
+  "Backend": "#E67E22",
+  "Frontend": "#3498DB",
+  "Testing": "#E74C3C",
+  "Documentation": "#1ABC9C",
+  "Database": "#F39C12",
+  "Planning": "#2ECC71",
+  "Bug": "#C0392B",
+  "Feature": "#2980B9",
+  "Enhancement": "#8E44AD"
+};
