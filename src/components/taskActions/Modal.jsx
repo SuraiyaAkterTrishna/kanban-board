@@ -1,7 +1,19 @@
-export default function Modal() {
+export default function Modal({onClose}) {
   return (
-    <div className="max-w-4xl mx-auto px-4 py-10 sm:py-12 bg-gray-50 min-h-screen">
-      <div className="mb-8 flex items-center justify-between">
+    <div 
+      className="fixed inset-0 z-[9999] bg-black/70 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto"
+    >
+      <div className="relative w-full max-w-4xl bg-white rounded-2xl shadow-2xl max-h-[90vh] overflow-y-auto">
+        <button
+          onClick={onClose}
+          className="absolute right-4 top-4 z-10 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-full p-2 transition-colors"
+        >
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      <div className="p-6 sm:p-8">
+        <div className="mb-8 flex items-center justify-between">
         <div>
           <a
             href="./index.html"
@@ -124,12 +136,13 @@ export default function Modal() {
           </div>
 
           <div className="flex flex-col gap-3 sm:flex-row sm:justify-end">
-            <a
-              href="./index.html"
-              className="inline-flex items-center justify-center rounded-xl border border-gray-200 px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50"
+            <button
+              type="button"
+              onClick={onClose}
+              className="inline-flex items-center justify-center rounded-xl bg-gray-100 px-6 py-3 text-sm font-semibold text-gray-900 hover:bg-gray-200"
             >
               Cancel
-            </a>
+            </button>
             <button
               type="submit"
               className="inline-flex items-center justify-center rounded-xl bg-gray-900 px-6 py-3 text-sm font-semibold text-white hover:bg-gray-800"
@@ -139,6 +152,9 @@ export default function Modal() {
           </div>
         </form>
       </div>
+      </div>
+
     </div>
+  </div>
   );
 }
