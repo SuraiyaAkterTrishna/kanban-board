@@ -1,4 +1,4 @@
-const tasks = [
+export const tasks = [
     {
         "id": crypto.randomUUID(),
         "title": "Wireframes",
@@ -72,12 +72,6 @@ const tasks = [
       "status": "done"
     }
 ]
-
-function getAllTasks(){
-    return tasks;
-}
-
-export {getAllTasks};
 
 export const tagColors = {
   "Design": "#4A90E2",
