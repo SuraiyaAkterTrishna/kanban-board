@@ -1,4 +1,24 @@
-export default function Task() {
+export default function Task({ task }) {
+  function formatDate(date) {
+    const d = new Date(date);
+    return d.toLocaleDateString("en-US", { month: "short", day: "numeric" });
+  }
+
+  const getTagColor = (tag) => {
+    const colors = {
+      Design: "#4A90E2",
+      Development: "#27AE60",
+      "UI/UX": "#9B59B6",
+      Backend: "#E67E22",
+      Frontend: "#3498DB",
+      Testing: "#E74C3C",
+      Documentation: "#1ABC9C",
+      Database: "#F39C12",
+      Planning: "#2ECC71",
+    };
+    return colors[tag] || "#6c757d";
+  };
+
   return (
     <div
       className="bg-white rounded-lg border border-gray-200 p-4 hover:shadow-md transition-shadow relative"
@@ -56,15 +76,19 @@ export default function Task() {
         </div>
       </div>
       <div className="mb-3">
-        <h3 className="font-semibold text-gray-900 text-sm">Wireframes</h3>
+        <h3 className="font-semibold text-gray-900 text-sm">{task.title}</h3>
       </div>
-      <p className="text-xs text-gray-600 mb-4">
-        Set up high-fidelity prototypes with conditional logic
-      </p>
+      <p className="text-xs text-gray-600 mb-4">{task.description}</p>
       <div className="flex items-center gap-2 mb-3">
-        <span className="inline-block px-2.5 py-1 bg-blue-50 text-blue-700 text-xs font-medium rounded">
-          Design
-        </span>
+        {task.tags.map((tag) => (
+          <span
+            key={tag}
+            className="inline-block px-2.5 py-1 text-xs font-medium rounded text-white"
+            style={{ backgroundColor: getTagColor(tag) }}
+          >
+            {tag}
+          </span>
+        ))}
       </div>
       <div className="flex items-center gap-1 text-xs text-gray-500">
         <svg
@@ -80,7 +104,7 @@ export default function Task() {
             d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
           ></path>
         </svg>
-        Aug 26
+        {formatDate(task.date)}
       </div>
     </div>
   );
