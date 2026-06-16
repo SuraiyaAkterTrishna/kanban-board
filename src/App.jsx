@@ -1,8 +1,10 @@
 import AppContent from "./components/AppContent";
-
+import TaskProvider from "./context/TaskProvider";
 
 export default function App() {
   return (
-    <AppContent></AppContent>
+    <TaskProvider>
+      <AppContent></AppContent>
+    </TaskProvider>
   )
 }
