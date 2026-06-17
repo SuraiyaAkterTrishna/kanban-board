@@ -6,8 +6,14 @@ import { TaskContext } from "./TaskContext";
 export const TaskProvider = ({ children }) => {
   const [state, dispatch] = useReducer(TaskReducer, initialState);
 
+  const value = {
+    tasks: state.tasks,
+    filterTags: state.filterTags,
+    dispatch
+  };
+
   return (
-    <TaskContext.Provider value={{ tasks: state.tasks, dispatch }}>
+    <TaskContext.Provider value={value}>
       {children}
     </TaskContext.Provider>
   );
